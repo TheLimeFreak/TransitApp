@@ -1,4 +1,4 @@
-import { PlaceSearchResult } from "@/src/lib/entur/types";
+import { PlaceSearchResult } from "@/lib/entur/types";
 import { NextRequest, NextResponse } from "next/server";
 
 const ET_CLIENT_NAME = process.env.ET_CLIENT_NAME!;
