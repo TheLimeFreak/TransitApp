@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react"
 import { PlaceSearchResult } from "../lib/entur/types"
+import DepartureBoard from "./departure-board";
 
 export default function StopPlaceSearch() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<PlaceSearchResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState<PlaceSearchResult | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -51,13 +53,17 @@ export default function StopPlaceSearch() {
         {results.map((r) => (
           <li
             key={r.id}
-            onClick={() => console.log("selected", r)}
+            onClick={() => {
+              setSelectedPlace(r);
+              console.log("selected", r);
+            }}
           >
             <div>{r.name}</div>
             <div>{r.label}</div>
           </li>
         ))}
       </ul>
+      {selectedPlace && <DepartureBoard stopId={selectedPlace.id} />}
     </div>
   );
 }

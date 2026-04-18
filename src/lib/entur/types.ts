@@ -7,3 +7,16 @@ export type PlaceSearchResult = {
   lat?: number;
   lon?: number;
 };
+
+export type Departure = {
+  id: string;
+  destination: string;
+  aimedDepartureTime?: string;
+  expectedDepartureTime?: string;
+  lineId?: string;
+  linePublicCode?: string;
+  transportMode?: string;
+  quayPublicCode?: string;
+  realtime: boolean;
+  cancelled: boolean;
+};
